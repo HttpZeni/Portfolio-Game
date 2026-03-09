@@ -1,3 +1,5 @@
+import { pac1, pac2, pac3 } from "../assets";
+
 export const starterText: React.ReactNode = (
     <p className="text-ink-300 text-xl font-mono">I'm a <span className="text-periwinkle-400">hobby game developer</span> who enjoys <span className="text-periwinkle-400">building small projects</span>.
         Most of my projects are <span className="text-periwinkle-400">recreations of existing games</span> that I use to understand how different <span className="text-periwinkle-400">mechanics</span> work.
@@ -25,7 +27,7 @@ export const projects: Record<string, ProjectProps> = {
         name: "Pac-Man",
         description: "I tried to recreate Pac-Man in Unity and focused mostly on the systems. The game runs on a 23×22 tile based grid.Pac-Man has grid movement with input buffering, instant reverse movement, and tile centering. All four ghosts use BFS pathfinding, which was the hardest part for me.Each ghost also has its own chase behavior, along with Scatter and Frightened states. The game also includes a wave system with dynamically increasing difficulty, fruit spawning based on score, 3 lives, highscore saving, audio, and full keyboard and gamepad support",
         short_description: "A Pac-Man recreation I built in Unity with ghost AI and BFS pathfinding.",
-        screenshots: ["src/assets/Pacmanscreenshots/1.png", "src/assets/Pacmanscreenshots/2.png", "src/assets/Pacmanscreenshots/2.png"],
+        screenshots: [pac1, pac2, pac3],
         tags: ["C#", "Unity"],
         play_link: "https://httpzeni.itch.io/pac-man"
     },
@@ -36,7 +38,7 @@ export const featuredProjects: Record<string, ProjectProps> = {
         name: "Pac-Man",
         description: "I tried to recreate Pac-Man in Unity and focused mostly on the systems. The game runs on a 23×22 tile based grid.Pac-Man has grid movement with input buffering, instant reverse movement, and tile centering. All four ghosts use BFS pathfinding, which was the hardest part for me.Each ghost also has its own chase behavior, along with Scatter and Frightened states. The game also includes a wave system with dynamically increasing difficulty, fruit spawning based on score, 3 lives, highscore saving, audio, and full keyboard and gamepad support",
         short_description: "A Pac-Man recreation I built in Unity with ghost AI and BFS pathfinding.",
-        screenshots: ["src/assets/Pacmanscreenshots/1.png", "src/assets/Pacmanscreenshots/2.png", "src/assets/Pacmanscreenshots/3.png"],
+        screenshots: [pac1, pac2, pac3],
         tags: ["C#", "Unity"],
         play_link: "https://httpzeni.itch.io/pac-man"
     },

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { starterText } from "../data";
 import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
 import { useFadeIn } from "../assets/hooks/useFadeIn";
+import { gif1 } from "../assets";
 
 const FULL_NAME = "Zeni";
 
@@ -66,7 +67,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <img src="src/assets/gif1.gif" alt="Pokemon Gif" className="max-w-full max-h-96 object-contain" />
+                    <img src={gif1} alt="Pokemon Gif" className="max-w-full max-h-96 object-contain" />
                 </div>
             </div>
         </div>
