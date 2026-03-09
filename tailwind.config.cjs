@@ -1,141 +1,98 @@
 /** @type {import('tailwindcss').Config} */
+
+// Google Fonts (in <head>):
+// https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Courier+Prime&family=Press+Start+2P&display=swap
+
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   theme: {
     extend: {
+
       colors: {
-        // Haupt-Farbschema - Cyber/Gaming Theme
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+        base: {
+          950: "#1a1d26",
+          900: "#1e2130",   // main bg
+          800: "#252839",   // cards
+          700: "#2e3247",   // elevated
+          600: "#3a3f58",   // borders
+          500: "#4a5070",   // subtle
         },
-        accent: {
-          50: '#fdf4ff',
-          100: '#fae8ff',
-          200: '#f5d0fe',
-          300: '#f0abfc',
-          400: '#e879f9',
-          500: '#d946ef',
-          600: '#c026d3',
-          700: '#a21caf',
-          800: '#86198f',
-          900: '#701a75',
+        ink: {
+          50:  "#e8eaf2",   // primary text
+          100: "#c4c8dc",   // secondary
+          300: "#8890b0",   // muted
         },
-        dark: {
-          50: '#18181b',
-          100: '#27272a',
-          200: '#3f3f46',
-          300: '#52525b',
-          400: '#71717a',
-          500: '#a1a1aa',
-          600: '#d4d4d8',
-          700: '#e4e4e7',
-          800: '#f4f4f5',
-          900: '#fafafa',
+        gold: {
+          300: "#e8c46a",   // hover
+          400: "#c8952a",   // PRIMARY ACCENT
+          500: "#a87820",   // pressed
         },
-        // Gaming-spezifische Farben
-        neon: {
-          green: '#39ff14',
-          blue: '#00f0ff',
-          pink: '#ff10f0',
-          orange: '#ff6b35',
-          purple: '#b537f2',
+        // Second accent — muted periwinkle blue
+        // Complements gold without clashing, fits the pixel/game vibe
+        periwinkle: {
+          300: "#9ba8d4",   // hover
+          400: "#6b7db8",   // SECONDARY ACCENT
+          500: "#4e5e96",   // pressed
         },
       },
+
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Orbitron', 'sans-serif'], // Für Überschriften
-        mono: ['JetBrains Mono', 'monospace'], // Für Code/Tech-Look
-        gaming: ['Press Start 2P', 'cursive'], // Retro Gaming
+        mono:  ['"Share Tech Mono"', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        body:  ['"Courier Prime"', '"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        pixel: ['"Press Start 2P"', 'monospace'],
       },
+
       fontSize: {
-        '2xs': '0.625rem',
-        '3xs': '0.5rem',
+        "sm": '12px',
+        "md": '14px'
       },
-      spacing: {
-        '128': '32rem',
-        '144': '36rem',
+
+      borderRadius: {
+        DEFAULT: "3px",
+        sm:      "2px",
+        md:      "4px",
+        none:    "0px",
       },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'fade-in-up': 'fadeInUp 0.6s ease-out',
-        'slide-in-right': 'slideInRight 0.5s ease-out',
-        'slide-in-left': 'slideInLeft 0.5s ease-out',
-        'bounce-slow': 'bounce 3s infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'glow': 'glow 2s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'gradient': 'gradient 8s linear infinite',
-        'shimmer': 'shimmer 2s linear infinite',
-        'glitch': 'glitch 1s linear infinite',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        slideInRight: {
-          '0%': { opacity: '0', transform: 'translateX(-20px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        slideInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(20px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.5)' },
-          '50%': { boxShadow: '0 0 40px rgba(14, 165, 233, 0.8)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        gradient: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-1000px 0' },
-          '100%': { backgroundPosition: '1000px 0' },
-        },
-        glitch: {
-          '0%, 100%': { transform: 'translate(0)' },
-          '20%': { transform: 'translate(-2px, 2px)' },
-          '40%': { transform: 'translate(-2px, -2px)' },
-          '60%': { transform: 'translate(2px, 2px)' },
-          '80%': { transform: 'translate(2px, -2px)' },
-        },
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
-      },
+
       boxShadow: {
-        'neon': '0 0 20px rgba(14, 165, 233, 0.6)',
-        'neon-pink': '0 0 20px rgba(217, 70, 239, 0.6)',
-        'neon-green': '0 0 20px rgba(57, 255, 20, 0.6)',
-        'game': '0 8px 32px rgba(0, 0, 0, 0.4)',
-        'inner-glow': 'inset 0 0 20px rgba(14, 165, 233, 0.3)',
+        "pixel":  "4px 4px 0px 0px #c8952a",
+        "glow":   "0 0 14px 2px rgba(200, 149, 42, 0.3)",
+        "panel":  "0 4px 20px rgba(0,0,0,0.4)",
       },
-      backdropBlur: {
-        xs: '2px',
+
+      // Pixel font rendering — no antialiasing
+      // Usage: className="font-pixel text-pixel-sm [font-smooth:never] [-webkit-font-smoothing:none]"
+      // Or add this to globals.css:
+      //   .font-pixel { -webkit-font-smoothing: none; font-smooth: never; }
+
+      keyframes: {
+        blink: { "0%,100%": { opacity: 1 }, "50%": { opacity: 0 } },
+        float: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-5px)" } },
+        glitch: {
+          "0%,100%": { transform: "translateX(0)",    clipPath: "inset(0 0 100% 0)" },
+          "30%":     { transform: "translateX(-3px)", clipPath: "inset(20% 0 50% 0)" },
+          "60%":     { transform: "translateX(3px)",  clipPath: "inset(60% 0 10% 0)" },
+        },
+      },
+
+      animation: {
+        "cursor": "blink 1s step-end infinite",
+        "float":  "float 4s ease-in-out infinite",
+        "glitch": "glitch 0.35s steps(1) 1",
+      },
+
+      transitionTimingFunction: {
+        "pixel": "steps(3)",
+        "game":  "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },
-}
+
+  plugins: [],
+};
