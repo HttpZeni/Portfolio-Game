@@ -18,7 +18,7 @@ export default function App() {
         <div className="w-3/5 flex flex-col">
           <div id="home"><Home /></div>
           <div id="projects"><Projects /></div>
-          <Bento />
+          <div id="more"><Bento /></div>
           <div id="contact"><Contact /></div>
         </div>
       </div>
