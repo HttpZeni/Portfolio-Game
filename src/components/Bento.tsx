@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import Box from "./Box"
 import Button from "./Button"
 import { skills } from "../data"
 import { fetchDcData, type DiscordPresenceData } from "../data/api"
 import { useFadeIn } from "../assets/hooks/useFadeIn"
 import { loadScore, saveScore } from "../data/localstorageData"
+import { DiscordStatus } from "../data/api"
+import WipBox from "./WipBox"
 
 function resolveImage(src?: string): string | null {
     if (!src) return null
@@ -21,6 +23,8 @@ const typeLabel: Record<number, string> = {
     3: "Watching",
     5: "Competing in",
 }
+
+export let userStatus: DiscordStatus = "loading";
 
 export default function Bento() {
     const [typedCommit, setTypedCommit] = useState("")
@@ -85,6 +89,12 @@ export default function Bento() {
         const id = setInterval(tick, 1000)
         return () => clearInterval(id)
     }, [])
+
+    useEffect(() => {
+        const status = data?.discord_status;
+        if (status == undefined) return;
+        userStatus = status;
+    }, [data])
 
     return (
         <div ref={ref}
@@ -311,7 +321,7 @@ export default function Bento() {
                         <p className="text-gold-400 font-mono text-sm" id="clock-box">--:--:--</p>
                     </div>
                 </Box>
-
+                <WipBox />
             </div>
         </div>
     )

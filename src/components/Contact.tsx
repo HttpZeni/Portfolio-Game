@@ -21,7 +21,7 @@ export default function Contact() {
                 <LinkItem />
             </div>
             <p className="font-pixel text-ink-300 text-xs">
-                Site visited by <span className="text-gold-400">{count}</span> people.
+                You visited <span className="text-gold-400">{count}</span> times.
             </p>
         </div>
     );
