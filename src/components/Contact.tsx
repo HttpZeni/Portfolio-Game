@@ -16,7 +16,7 @@ export default function Contact() {
     }, []);
 
     return (
-        <div className="w-full flex flex-row justify-between gap-5 mt-20">
+        <div className="w-full flex flex-col md:flex-row justify-between gap-5 mt-20">
             <div className="w-1/2 flex flex-row gap-5">
                 <LinkItem />
             </div>

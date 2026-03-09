@@ -34,7 +34,7 @@ export default function Home() {
     return (
         <div
             ref={ref}
-            className="w-full flex flex-row items-center gap-16 mt-[10%]"
+            className="w-full flex flex-col md:flex-row items-center gap-16 mt-[10%]"
             style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",

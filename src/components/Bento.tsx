@@ -96,7 +96,7 @@ export default function Bento() {
             }}>
 
             {/* Row 1 */}
-            <div className="w-full flex flex-row gap-5">
+            <div className="w-full flex flex-col md:flex-row gap-5">
 
                 {/* Skills */}
                 <Box width={17}>
@@ -255,7 +255,7 @@ export default function Bento() {
             </div>
 
             {/* Row 2 */}
-            <div className="w-full flex flex-row gap-5">
+            <div className="w-full flex flex-col md:flex-row gap-5">
 
                 {/* Latest Commit */}
                 <Box width={17}>
