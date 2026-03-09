@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { starterText } from "../data";
-import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
 import { useFadeIn } from "../assets/hooks/useFadeIn";
+import LinkItem from "./LinkItem";
 import { gif1 } from "../assets";
 
 const FULL_NAME = "Zeni";
@@ -52,18 +52,7 @@ export default function Home() {
                     </p>
                     <div className="w-full h-fit">{starterText}</div>
                     <div className="w-full h-fit flex flex-row gap-5">
-                        <a href="https://github.com" target="_blank" rel="noreferrer" className="group w-fit flex flex-row gap-2 items-center justify-center font-mono text-ink-300 cursor-pointer">
-                            <FaGithub className="text-ink-300 text-xl transition-all duration-300 group-hover:text-gold-300" />
-                            <span className="transition-all duration-300 group-hover:text-gold-300">GitHub</span>
-                        </a>
-                        <div className="group w-fit flex flex-row gap-2 items-center justify-center font-mono text-ink-300 cursor-pointer">
-                            <FaDiscord className="text-ink-300 text-xl transition-all duration-300 group-hover:text-gold-300" />
-                            <span className="transition-all duration-300 group-hover:text-gold-300">Discord</span>
-                        </div>
-                        <div className="group w-fit flex flex-row gap-2 items-center justify-center font-mono text-ink-300 cursor-pointer">
-                            <FaEnvelope className="text-ink-300 text-xl transition-all duration-300 group-hover:text-gold-300" />
-                            <span className="transition-all duration-300 group-hover:text-gold-300">Mail</span>
-                        </div>
+                        <LinkItem />
                     </div>
                 </div>
                 <div className="flex-1 flex justify-center">
