@@ -4,7 +4,7 @@ import Button from "./Button"
 import { skills } from "../data"
 import { fetchDcData, type DiscordPresenceData } from "../data/api"
 import { useFadeIn } from "../assets/hooks/useFadeIn"
-import { loadItem, saveItem } from "../data/localstorageData"
+import { loadScore, saveScore } from "../data/localstorageData"
 
 function resolveImage(src?: string): string | null {
     if (!src) return null
@@ -25,7 +25,7 @@ const typeLabel: Record<number, string> = {
 export default function Bento() {
     const [typedCommit, setTypedCommit] = useState("")
     const { ref, visible } = useFadeIn(0.1)
-    const [clicked, setClicked] = useState(loadItem())
+    const [clicked, setClicked] = useState(loadScore())
     const [data, setData] = useState<DiscordPresenceData | null>(null)
     const [commit, setCommit] = useState<{ message: string; repo: string; date: string } | null>(null)
     const [ghStats, setGhStats] = useState<{ repos: number; followers: number } | null>(null)
@@ -39,7 +39,7 @@ export default function Bento() {
             setData(response.data)
         }
         call()
-        const interval = setInterval(call, 10000)
+        const interval = setInterval(call, 4000)
         return () => clearInterval(interval)
     }, [])
 
@@ -243,7 +243,7 @@ export default function Bento() {
                         <Button
                             onClick={() => setClicked((prev) => {
                                 const next = prev + 1;
-                                saveItem(next);
+                                saveScore(next);
                                 return next;
                             })}
                             text="► CLICK ME"

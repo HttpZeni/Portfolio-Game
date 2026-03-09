@@ -1,10 +1,17 @@
 const SCORE_KEY = "score";
+const VISITED_KEY = "visited";
 
-export function loadItem(): number {
+export function loadScore(): number {
     const val = localStorage.getItem(SCORE_KEY);
     return val ? parseInt(val, 10) : 0;
 }
-
-export function saveItem(value: number): void {
+export function saveScore(value: number): void {
     localStorage.setItem(SCORE_KEY, String(value));
+}
+export function loadVisited(): number {
+    const val = localStorage.getItem(VISITED_KEY);
+    return val ? parseInt(val, 10) : 0;
+}
+export function saveVisited(value: number): void {
+    localStorage.setItem(VISITED_KEY, String(value));
 }

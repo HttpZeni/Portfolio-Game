@@ -40,7 +40,7 @@ export default function Project({ project }: props) {
 
             <div onClick={() => setOpen(false)} className="absolute inset-0 bg-black/80" />
 
-            <div className="modal-enter relative w-1/3 bg-base-800 border border-base-600 [box-shadow:_8px_8px_0_#6b7db8] z-10 flex flex-col">
+            <div className="modal-enter relative w-1/3 bg-base-800 border border-base-600 [box-shadow:_8px_8px_0_#1a1d26] z-10 flex flex-col">
                 <div className="w-full h-8 bg-base-600 flex items-center justify-between px-5">
                     <h1 className="text-gold-400 text-sm font-pixel">{project.name}</h1>
                     <span onClick={() => setOpen(false)} className="text-ink-300 text-sm font-pixel hover:text-red-400 cursor-pointer transition-colors duration-300">X</span>
@@ -73,7 +73,7 @@ export default function Project({ project }: props) {
         <>
             <div
                 onClick={() => setOpen(true)}
-                className="w-[27rem] h-[22rem] shrink-0 bg-base-800 [box-shadow:_8px_8px_0_#6b7db8] flex flex-col transition-all duration-175 hover:[box-shadow:_8px_8px_0_#c8952a] active:[box-shadow:_4px_4px_0_#c8952a] active:translate-x-1 active:translate-y-1 cursor-pointer"
+                className="w-[27rem] h-[22rem] shrink-0 bg-base-800 [box-shadow:_8px_8px_0_#1a1d26] flex flex-col transition-all duration-175 hover:[box-shadow:_8px_8px_0_#a87820] active:[box-shadow:_4px_4px_0_#a87820] active:translate-x-1 active:translate-y-1 cursor-pointer"
             >
                 <div className="relative w-full h-[65%] overflow-hidden">
                     <img
