@@ -23,25 +23,15 @@ function GlitchTag({ skill }: { skill: string }) {
                 <>
                     <span
                         aria-hidden
-                        className="absolute inset-0 flex items-center px-4 text-gold-400 pointer-events-none"
-                        style={{
-                            clipPath: "inset(30% 0 50% 0)",
-                            transform: "translateX(-3px)",
-                            opacity: 0.7,
-                            color: "#6b7db8",
-                        }}
+                        className="absolute inset-0 flex items-center px-4 pointer-events-none"
+                        style={{ clipPath: "inset(30% 0 50% 0)", transform: "translateX(-3px)", opacity: 0.7, color: "#6b7db8" }}
                     >
                         {skill}
                     </span>
                     <span
                         aria-hidden
                         className="absolute inset-0 flex items-center px-4 pointer-events-none"
-                        style={{
-                            clipPath: "inset(60% 0 10% 0)",
-                            transform: "translateX(3px)",
-                            opacity: 0.6,
-                            color: "#c8952a",
-                        }}
+                        style={{ clipPath: "inset(60% 0 10% 0)", transform: "translateX(3px)", opacity: 0.6, color: "#c8952a" }}
                     >
                         {skill}
                     </span>
@@ -58,31 +48,29 @@ export default function Skills() {
     return (
         <div
             ref={ref}
-            className="w-full flex justify-center mt-10"
+            className="w-full flex flex-col gap-10 mt-[8%]"
             style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",
                 transition: "opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s",
             }}
         >
-            <div className="w-3/5 flex flex-col gap-10 justify-center items-start mt-[8%]">
-                <div className="w-full h-fit flex flex-row items-center gap-4">
-                    <p className="text-gold-400 text-lg">✦</p>
-                    <p className="text-base text-ink-50 font-pixel">Skills</p>
-                </div>
+            <div className="w-full h-fit flex flex-row items-center gap-4">
+                <p className="text-gold-400 text-lg">✦</p>
+                <p className="text-base text-ink-50 font-pixel">Skills</p>
+            </div>
 
-                <div className="w-full flex flex-col gap-8 pl-7">
-                    {Object.entries(skills).map(([category, items]) => (
-                        <div key={category} className="flex flex-col gap-3">
-                            <p className="text-ink-300 text-xs font-mono">▸ {category}</p>
-                            <div className="flex flex-row gap-3 flex-wrap">
-                                {items.map((skill) => (
-                                    <GlitchTag key={skill} skill={skill} />
-                                ))}
-                            </div>
+            <div className="w-full flex flex-col gap-8 pl-7">
+                {Object.entries(skills).map(([category, items]) => (
+                    <div key={category} className="flex flex-col gap-3">
+                        <p className="text-ink-300 text-xs font-mono">▸ {category}</p>
+                        <div className="flex flex-row gap-3 flex-wrap">
+                            {items.map((skill) => (
+                                <GlitchTag key={skill} skill={skill} />
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
