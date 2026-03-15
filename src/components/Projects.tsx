@@ -20,9 +20,11 @@ export default function Projects() {
                 <Star className="text-gold-400 w-5 h-5" />
                 <p className="text-base text-ink-50 font-pixel">Featured Projects</p>
             </div>
-            {Object.values(featuredProjects).map((project) => (
-                <Project key={project.name} project={project} />
-            ))}
+            <div className="w-full flex flex-row gap-5">
+                {Object.values(featuredProjects).map((project) => (
+                    <Project key={project.name} project={project} />
+                ))}
+            </div>
         </div>
     );
 }

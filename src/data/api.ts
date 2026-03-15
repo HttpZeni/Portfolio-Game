@@ -29,6 +29,7 @@ export interface DiscordActivity {
     flags?: number;
     platform?: string;
     session_id?: string;
+    sync_id?: string;
 }
 
 export interface DiscordUser {
@@ -41,7 +42,7 @@ export interface DiscordUser {
     display_name?: string;
 }
 
-export type DiscordStatus = "online" | "idle" | "dnd" | "offline";
+export type DiscordStatus = "online" | "idle" | "dnd" | "offline" | "loading";
 
 export interface SpotifyData {
     track_id: string;
@@ -79,6 +80,7 @@ export const fetchDcData = async (): Promise<DiscordPresenceResponse> => {
         const res = await fetch("https://api.lanyard.rest/v1/users/791804494723285013");
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data: DiscordPresenceResponse = await res.json();
+        console.log(data);
         return data;
     } catch (err) {
         console.error(err);

@@ -30,8 +30,8 @@ const statusStyle: Record<WipStatus, { color: string; bg: string; border: string
 
 const wipProjects: WipProject[] = [
     {
-        name: "Arkanoid",
-        description: "I'm currently trying to build a game like Arkanoid or Breakout",
+        name: "Tower Defense Game",
+        description: "I'm currently trying to build a TD game.",
         tags: ["C#", "Unity"],
         status: "IN DEV",
     },

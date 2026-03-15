@@ -71,9 +71,8 @@ export default function Project({ project }: props) {
 
     return (
         <>
-            <div
-                onClick={() => setOpen(true)}
-                className="w-[27rem] h-[22rem] shrink-0 bg-base-800 [box-shadow:_8px_8px_0_#1a1d26] flex flex-col transition-all duration-175 hover:[box-shadow:_8px_8px_0_#a87820] active:[box-shadow:_4px_4px_0_#a87820] active:translate-x-1 active:translate-y-1 cursor-pointer"
+            <div onClick={() => setOpen(true)}
+                className="w-[27rem] h-[22rem] shrink-0 bg-base-800 [box-shadow:_8px_8px_0_#1a1d26] flex flex-col transition-all duration-175 hover:[box-shadow:_8px_8px_0_#a87820] active:[box-shadow:_2px_2px_0_#a87820] active:translate-x-1 active:translate-y-1 cursor-pointer"
             >
                 <div className="relative w-full h-[65%] overflow-hidden">
                     <img

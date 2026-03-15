@@ -1,4 +1,4 @@
-import { pac1, pac2, pac3 } from "../assets";
+import { pac1, pac2, pac3, td1, td2, td3, td4, td5, td6 } from "../assets";
 
 export const starterText: React.ReactNode = (
     <p className="text-ink-300 text-xl font-mono">I'm a <span className="text-periwinkle-400">hobby game developer</span> who enjoys <span className="text-periwinkle-400">building small projects</span>.
@@ -31,6 +31,14 @@ export const projects: Record<string, ProjectProps> = {
         tags: ["C#", "Unity"],
         play_link: "https://httpzeni.itch.io/pac-man"
     },
+    "Starhold": {
+        name: "Starhold",
+        description: "A 2D top-down tower defense game with roguelike elements, inspired by Orcs Must Die 3, built solo in Unity (C#). I mainly used it to improve my singleton and state machine usage, the player runs on a hand rolled FSM and most systems communicate through a central GameManager via events. Unlike a traditional TD game, the main progression is through upgrading your player ship between waves rather than the towers themselves, towers stay static, the player gets stronger. Enemies navigate a grid using BFS pathfinding with a nearest-goal fallback for blocked paths. There are 4 tower types (Standard, Rapid Fire, Sniper, AOE) and a drag-and-drop shop for placing them. Also has 40 configurable waves with dynamic difficulty scaling, a moveable player ship, and a ScriptableObject-driven upgrade system.",
+        short_description: "A tower defense game I made in Unity, inspired by Orcs Must Die 3. I focused on improving my singleton and state machine patterns. Has 4 tower types, BFS pathfinding, and 40 waves.",
+        screenshots: [td1, td2, td3, td4, td5, td6],
+        tags: ["C#", "Unity"],
+        play_link: "https://httpzeni.itch.io/starhold"
+    },
 }
 
 export const featuredProjects: Record<string, ProjectProps> = {
@@ -41,6 +49,14 @@ export const featuredProjects: Record<string, ProjectProps> = {
         screenshots: [pac1, pac2, pac3],
         tags: ["C#", "Unity"],
         play_link: "https://httpzeni.itch.io/pac-man"
+    },
+    "Starhold": {
+        name: "Starhold",
+        description: "A 2D top-down tower defense game with roguelike elements, inspired by Orcs Must Die 3, built solo in Unity (C#). I mainly used it to improve my singleton and state machine usage, the player runs on a hand rolled FSM and most systems communicate through a central GameManager via events. Unlike a traditional TD game, the main progression is through upgrading your player ship between waves rather than the towers themselves, towers stay static, the player gets stronger. Enemies navigate a grid using BFS pathfinding with a nearest-goal fallback for blocked paths. There are 4 tower types (Standard, Rapid Fire, Sniper, AOE) and a drag-and-drop shop for placing them. Also has 40 configurable waves with dynamic difficulty scaling, a moveable player ship, and a ScriptableObject-driven upgrade system.",
+        short_description: "A tower defense game I made in Unity, inspired by Orcs Must Die 3. I focused on improving my singleton and state machine patterns. Has 4 tower types, BFS pathfinding, and 40 waves.",
+        screenshots: [td1, td2, td3, td4, td5, td6],
+        tags: ["C#", "Unity"],
+        play_link: "https://httpzeni.itch.io/starhold"
     },
 }
 

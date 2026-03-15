@@ -8,11 +8,14 @@ import { loadScore, saveScore } from "../data/localstorageData"
 import { DiscordStatus } from "../data/api"
 import WipBox from "./WipBox"
 
-function resolveImage(src?: string): string | null {
+function resolveActivityImage(src?: string, appId?: string): string | null {
     if (!src) return null
     if (src.startsWith("mp:external/")) {
         const decoded = decodeURIComponent(src.split("/https/")[1] ?? "")
         return decoded ? "https://" + decoded : null
+    }
+    if (src.match(/^\d+$/) && appId) {
+        return `https://cdn.discordapp.com/app-assets/${appId}/${src}.png`
     }
     return null
 }
@@ -27,15 +30,15 @@ const typeLabel: Record<number, string> = {
 export let userStatus: DiscordStatus = "loading";
 
 export default function Bento() {
-    const [typedCommit, setTypedCommit] = useState("")
-    const { ref, visible } = useFadeIn(0.1)
-    const [clicked, setClicked] = useState(loadScore())
-    const [data, setData] = useState<DiscordPresenceData | null>(null)
-    const [commit, setCommit] = useState<{ message: string; repo: string; date: string } | null>(null)
-    const [ghStats, setGhStats] = useState<{ repos: number; followers: number } | null>(null)
+    const [typedCommit, setTypedCommit] = useState("");
+    const { ref, visible } = useFadeIn(0.1);
+    const [clicked, setClicked] = useState(loadScore());
+    const [data, setData] = useState<DiscordPresenceData | null>(null);
+    const [commit, setCommit] = useState<{ message: string; repo: string; date: string } | null>(null);
+    const [ghStats, setGhStats] = useState<{ repos: number; followers: number } | null>(null);
 
-    const activity = data?.activities[1]
-    const img = resolveImage(activity?.assets?.large_image)
+    const activity = data?.activities[1];
+    const img = resolveActivityImage(activity?.assets?.large_image, activity?.application_id);
 
     useEffect(() => {
         async function call() {
@@ -98,7 +101,7 @@ export default function Bento() {
 
     return (
         <div ref={ref}
-            className="flex flex-col gap-5 mt-44"
+            className="flex flex-col gap-5"
             style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",
@@ -162,8 +165,8 @@ export default function Bento() {
                                 <div className="flex flex-row gap-3 items-center">
                                     <img src={data.spotify.album_art_url} alt="" className="w-12 h-12 object-cover shrink-0 border border-base-600" />
                                     <div className="flex flex-col gap-0.5 overflow-hidden">
-                                        <p className="text-ink-100 font-pixel text-sm truncate">{data.spotify.song}</p>
-                                        <p className="text-ink-300 font-mono text-sm truncate">{data.spotify.artist}</p>
+                                        <a href={`https://open.spotify.com/track/${data.activities.find(a => a.id?.startsWith("spotify:"))?.sync_id}`} target="_blank" rel="noreferrer" className="hover:text-gold-300 transition-colors duration-200"><p className="text-ink-100 font-pixel text-sm truncate">{data.spotify.song}</p></a>
+                                        <a href={`https://open.spotify.com/search/${encodeURIComponent(data.spotify.artist)}`} target="_blank" rel="noreferrer" className="text-ink-300 font-mono text-sm truncate hover:text-gold-300 transition-colors duration-200"><p className="text-ink-300 font-mono text-sm truncate">{data.spotify.artist}</p></a>
                                         <p className="text-base-500 font-mono text-sm truncate">{data.spotify.album}</p>
                                     </div>
                                 </div>
@@ -188,8 +191,8 @@ export default function Bento() {
                                         <p className="text-ink-300 font-mono text-sm truncate">{activity.assets?.large_text}</p>
                                         <p className="text-base-500 font-mono text-sm truncate">{activity.state}</p>
                                         <div className="flex flex-row items-center gap-2 mt-1">
-                                            {resolveImage(activity.assets?.small_image) && (
-                                                <img src={resolveImage(activity.assets?.small_image)!} alt="" className="w-3 h-3 object-contain opacity-60" />
+                                            {resolveActivityImage(activity.assets?.small_image, activity.application_id) && (
+                                                <img src={resolveActivityImage(activity.assets?.small_image, activity.application_id)!} alt="" className="w-3 h-3 object-contain opacity-60" />
                                             )}
                                             <p className="text-base-500 font-mono text-sm">{activity.name}</p>
                                         </div>
@@ -197,12 +200,18 @@ export default function Bento() {
                                 </div>
                             </div>
                         ) : (
-                            <div className="flex flex-row gap-3 items-center">
-                                {img && <img src={img} alt="" className="w-12 h-12 object-cover shrink-0 border border-base-600" />}
-                                <div className="flex flex-col gap-0.5 overflow-hidden">
+                            <div className="flex flex-row gap-3 items-start">
+                                {img && (<img src={img} alt="" className="w-12 h-12 object-contain shrink-0 border border-base-600 bg-base-800" />)}
+                                <div className="flex flex-col gap-1 overflow-hidden">
                                     <p className="text-ink-100 font-pixel text-sm truncate">{activity.name}</p>
                                     {activity.details && <p className="text-ink-300 font-mono text-sm truncate">{activity.details}</p>}
                                     {activity.state && <p className="text-base-500 font-mono text-sm truncate">{activity.state}</p>}
+                                    <div className="flex flex-row items-center gap-2 mt-1">
+                                        {resolveActivityImage(activity.assets?.small_image, activity.application_id) && (
+                                            <img src={resolveActivityImage(activity.assets?.small_image, activity.application_id)!} alt="" className="w-3 h-3 object-contain opacity-60" />
+                                        )}
+                                        <p className="text-base-500 font-mono text-sm">{activity.assets?.large_text}</p>
+                                    </div>
                                 </div>
                             </div>
                         )}
